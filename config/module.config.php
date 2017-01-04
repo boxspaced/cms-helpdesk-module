@@ -6,6 +6,7 @@ use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
+use Zend\Permissions\Acl\Acl;
 
 return [
     'helpdesk' => [
@@ -30,6 +31,42 @@ return [
                 ],
             ],
             // LIFO
+        ],
+    ],
+    'acl' => [
+        'resources' => [
+            [
+                'id' => Controller\HelpdeskController::class,
+            ],
+        ],
+        'roles' => [
+            [
+                'id' => 'helpdesk-user',
+                'parents' => 'authenticated-user',
+            ],
+            [
+                'id' => 'helpdesk-manager',
+                'parents' => 'helpdesk-user',
+            ],
+        ],
+        'rules' => [
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'helpdesk-user',
+                'resources' => Controller\HelpdeskController::class,
+                'privileges' => [
+                    'index',
+                    'create-ticket',
+                    'view-ticket',
+                    'view-attachment',
+                ],
+            ],
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'helpdesk-manager',
+                'resources' => Controller\HelpdeskController::class,
+                'privileges' => 'resolve-ticket',
+            ],
         ],
     ],
     'service_manager' => [
