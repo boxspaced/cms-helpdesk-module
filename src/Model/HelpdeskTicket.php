@@ -107,7 +107,7 @@ class HelpdeskTicket extends AbstractEntity
      */
     public function getCreatedAt()
     {
-        return $this->get('createdAt');
+        return $this->get('created_at');
     }
 
     /**
@@ -116,7 +116,7 @@ class HelpdeskTicket extends AbstractEntity
      */
     public function setCreatedAt(DateTime $createdAt = null)
     {
-        $this->set('createdAt', $createdAt);
+        $this->set('created_at', $createdAt);
 		return $this;
     }
 

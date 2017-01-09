@@ -49,7 +49,7 @@ class HelpdeskTicketAttachment extends AbstractEntity
      */
     public function getFileName()
     {
-        return $this->get('fileName');
+        return $this->get('file_name');
     }
 
     /**
@@ -58,7 +58,7 @@ class HelpdeskTicketAttachment extends AbstractEntity
      */
     public function setFileName($fileName)
     {
-        $this->set('fileName', $fileName);
+        $this->set('file_name', $fileName);
 		return $this;
     }
 
@@ -85,7 +85,7 @@ class HelpdeskTicketAttachment extends AbstractEntity
      */
     public function getCreatedAt()
     {
-        return $this->get('createdAt');
+        return $this->get('created_at');
     }
 
     /**
@@ -94,7 +94,7 @@ class HelpdeskTicketAttachment extends AbstractEntity
      */
     public function setCreatedAt(DateTime $createdAt = null)
     {
-        $this->set('createdAt', $createdAt);
+        $this->set('created_at', $createdAt);
 		return $this;
     }
 

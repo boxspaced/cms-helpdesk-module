@@ -2,7 +2,7 @@
 namespace Helpdesk;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
+use Boxspaced\EntityManager\Mapper\Conditions;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
@@ -110,14 +110,14 @@ return [
                         'issue' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'createdAt' => [
+                        'created_at' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
                         'user' => [
                             'type' => User::class,
                         ],
                     ],
-                    'children' => [
+                    'one_to_many' => [
                         'comments' => [
                             'type' => Model\HelpdeskTicketComment::class,
                             'conditions' => function ($id) {
@@ -153,7 +153,7 @@ return [
                         'comment' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'createdAt' => [
+                        'created_at' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
                         'ticket' => [
@@ -180,10 +180,10 @@ return [
                         'id' => [
                             'type' => AbstractEntity::TYPE_INT,
                         ],
-                        'fileName' => [
+                        'file_name' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'createdAt' => [
+                        'created_at' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
                         'ticket' => [
