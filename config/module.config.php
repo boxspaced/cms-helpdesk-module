@@ -2,7 +2,7 @@
 namespace Helpdesk;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions;
+use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
@@ -120,17 +120,33 @@ return [
                     'one_to_many' => [
                         'comments' => [
                             'type' => Model\HelpdeskTicketComment::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('ticket.id')->eq($id);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'ticket.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                         'attachments' => [
                             'type' => Model\HelpdeskTicketAttachment::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('ticket.id')->eq($id);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'ticket.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
