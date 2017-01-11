@@ -1,5 +1,5 @@
 <?php
-namespace Helpdesk;
+namespace Boxspaced\CmsHelpdeskModule;
 
 class Module
 {

@@ -7,7 +7,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Helpdesk\\": "src/"
+            "Boxspaced\\CmsHelpdeskModule\\": "src/"
         }
     },
     "config": {
@@ -30,7 +30,7 @@
     ],
     "extra": {
         "zf": {
-            "module": "Helpdesk"
+            "module": "Boxspaced\\CmsHelpdeskModule"
         }
     }
 }

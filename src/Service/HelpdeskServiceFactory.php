@@ -1,15 +1,15 @@
 <?php
-namespace Helpdesk\Service;
+namespace Boxspaced\CmsHelpdeskModule\Service;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Helpdesk\Model;
+use Boxspaced\CmsHelpdeskModule\Model;
 use Zend\Mail\Transport\Smtp;
-use Account\Model\UserRepository;
-use Core\Model\EntityFactory;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
+use Boxspaced\CmsCoreModule\Model\EntityFactory;
 
 class HelpdeskServiceFactory implements FactoryInterface
 {

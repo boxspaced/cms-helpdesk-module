@@ -1,13 +1,13 @@
 <?php
-namespace Helpdesk\Controller;
+namespace Boxspaced\CmsHelpdeskModule\Controller;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Helpdesk\Controller\HelpdeskController;
-use Helpdesk\Service\HelpdeskService;
-use Account\Service\AccountService;
+use Boxspaced\CmsHelpdeskModule\Controller\HelpdeskController;
+use Boxspaced\CmsHelpdeskModule\Service\HelpdeskService;
+use Boxspaced\CmsAccountModule\Service\AccountService;
 use Zend\Log\Logger;
-use Core\Controller\AbstractControllerFactory;
+use Boxspaced\CmsCoreModule\Controller\AbstractControllerFactory;
 
 class HelpdeskControllerFactory extends AbstractControllerFactory implements FactoryInterface
 {

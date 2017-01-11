@@ -1,11 +1,11 @@
 <?php
-namespace Helpdesk;
+namespace Boxspaced\CmsHelpdeskModule;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
-use Core\Model\RepositoryFactory;
-use Account\Model\User;
+use Boxspaced\CmsCoreModule\Model\RepositoryFactory;
+use Boxspaced\CmsAccountModule\Model\User;
 use Zend\Permissions\Acl\Acl;
 
 return [

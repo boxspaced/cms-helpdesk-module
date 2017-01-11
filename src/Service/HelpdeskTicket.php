@@ -1,8 +1,8 @@
 <?php
-namespace Helpdesk\Service;
+namespace Boxspaced\CmsHelpdeskModule\Service;
 
 use DateTime;
-use Helpdesk\Model\HelpdeskTicket as HelpdeskTicketEntity;
+use Boxspaced\CmsHelpdeskModule\Model\HelpdeskTicket as HelpdeskTicketEntity;
 
 class HelpdeskTicket
 {

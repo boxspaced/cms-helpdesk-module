@@ -1,5 +1,5 @@
 <?php
-namespace Helpdesk\Exception;
+namespace Boxspaced\CmsHelpdeskModule\Exception;
 
 class RuntimeException extends \RuntimeException implements ExceptionInterface
 {

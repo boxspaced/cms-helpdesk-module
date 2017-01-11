@@ -1,20 +1,20 @@
 <?php
-namespace Helpdesk\Service;
+namespace Boxspaced\CmsHelpdeskModule\Service;
 
 use Exception as PhpException;
 use DateTime;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Helpdesk\Model;
+use Boxspaced\CmsHelpdeskModule\Model;
 use Zend\Db\Sql;
 use Zend\Uri\Http as HttpUri;
-use Helpdesk\Exception;
+use Boxspaced\CmsHelpdeskModule\Exception;
 use Zend\Mail\Transport\TransportInterface;
 use Zend\Mail\Message;
-use Account\Model\UserRepository;
-use Core\Model\EntityFactory;
-use Account\Model\User;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
+use Boxspaced\CmsCoreModule\Model\EntityFactory;
+use Boxspaced\CmsAccountModule\Model\User;
 
 class HelpdeskService
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Helpdesk\Exception;
+namespace Boxspaced\CmsHelpdeskModule\Exception;
 
 class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface
 {

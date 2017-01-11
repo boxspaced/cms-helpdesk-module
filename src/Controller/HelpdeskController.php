@@ -1,12 +1,12 @@
 <?php
-namespace Helpdesk\Controller;
+namespace Boxspaced\CmsHelpdeskModule\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Log\Logger;
-use Helpdesk\Service;
+use Boxspaced\CmsHelpdeskModule\Service;
 use Zend\Paginator;
-use Helpdesk\Form;
+use Boxspaced\CmsHelpdeskModule\Form;
 
 class HelpdeskController extends AbstractActionController
 {

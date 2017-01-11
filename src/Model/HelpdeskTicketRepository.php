@@ -1,5 +1,5 @@
 <?php
-namespace Helpdesk\Model;
+namespace Boxspaced\CmsHelpdeskModule\Model;
 
 use Boxspaced\EntityManager\EntityManager;
 use Boxspaced\EntityManager\Collection\Collection;
