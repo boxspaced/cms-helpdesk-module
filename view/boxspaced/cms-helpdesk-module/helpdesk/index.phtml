@@ -47,7 +47,7 @@
                 </thead>
                 <tbody>
                     <?php if (count($this->paginator)) : ?>
-                    <?php echo $this->partialLoop('cms-helpdesk-module/helpdesk/ticket-item.phtml', $this->paginator) ?>
+                    <?php echo $this->partialLoop('boxspaced/cms-helpdesk-module/helpdesk/ticket-item.phtml', $this->paginator) ?>
                     <?php else : ?>
                     <tr class="odd"><td width="100%">Empty result set</td><td>&nbsp;</td></tr>
                     <?php endif; ?>
@@ -57,7 +57,7 @@
             <?php echo $this->paginationControl(
                 $this->paginator,
                 'Sliding',
-                'cms-helpdesk-module/helpdesk/admin-pagination.phtml'
+                'boxspaced/cms-helpdesk-module/helpdesk/admin-pagination.phtml'
             ); ?>
 
         </div><!-- End stage area -->
