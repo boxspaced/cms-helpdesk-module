@@ -7,6 +7,7 @@ use Zend\Log\Logger;
 use Boxspaced\CmsHelpdeskModule\Service;
 use Zend\Paginator;
 use Boxspaced\CmsHelpdeskModule\Form;
+use Boxspaced\CmsAccountModule\Service\AccountService;
 
 class HelpdeskController extends AbstractActionController
 {
@@ -17,7 +18,7 @@ class HelpdeskController extends AbstractActionController
     protected $helpdeskService;
 
     /**
-     * @var Service\AccountService
+     * @var AccountService
      */
     protected $accountService;
 
@@ -38,13 +39,13 @@ class HelpdeskController extends AbstractActionController
 
     /**
      * @param Service\HelpdeskService $helpdeskService
-     * @param Service\AccountService $accountService
+     * @param AccountService $accountService
      * @param Logger $logger
      * @param array $config
      */
     public function __construct(
         Service\HelpdeskService $helpdeskService,
-        Service\AccountService $accountService,
+        AccountService $accountService,
         Logger $logger,
         array $config
     )
