@@ -46,14 +46,14 @@ class HelpdeskTicketRepository
      */
     public function getAllOpenTickets($offset = null, $showPerPage = null)
     {
-        $conditions = $this->entityManager->createConditions();
-        $conditions->field('status')->eq(HelpdeskTicket::STATUS_OPEN);
+        $query = $this->entityManager->createQuery();
+        $query->field('status')->eq(HelpdeskTicket::STATUS_OPEN);
 
         if (null !== $offset && null !== $showPerPage) {
-            $conditions->paging($offset, $showPerPage);
+            $query->paging($offset, $showPerPage);
         }
 
-        return $this->entityManager->findAll(HelpdeskTicket::class, $conditions);
+        return $this->entityManager->findAll(HelpdeskTicket::class, $query);
     }
 
     /**
