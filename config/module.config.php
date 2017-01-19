@@ -2,7 +2,6 @@
 namespace Boxspaced\CmsHelpdeskModule;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Boxspaced\CmsCoreModule\Model\RepositoryFactory;
 use Boxspaced\CmsAccountModule\Model\User;
@@ -120,33 +119,9 @@ return [
                     'one_to_many' => [
                         'comments' => [
                             'type' => Model\HelpdeskTicketComment::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'ticket.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                         'attachments' => [
                             'type' => Model\HelpdeskTicketAttachment::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'ticket.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                     ],
                 ],
