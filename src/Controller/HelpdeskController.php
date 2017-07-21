@@ -8,6 +8,7 @@ use Boxspaced\CmsHelpdeskModule\Service;
 use Zend\Paginator;
 use Boxspaced\CmsHelpdeskModule\Form;
 use Boxspaced\CmsAccountModule\Service\AccountService;
+use Zend\EventManager\EventManagerInterface;
 
 class HelpdeskController extends AbstractActionController
 {
@@ -56,7 +57,19 @@ class HelpdeskController extends AbstractActionController
         $this->config = $config;
 
         $this->view = new ViewModel();
-        $this->view->setTerminal(true);
+    }
+
+    /**
+     * @param EventManagerInterface $events
+     * @return void
+     */
+    public function setEventManager(EventManagerInterface $events)
+    {
+        parent::setEventManager($events);
+        $controller = $this;
+        $events->attach('dispatch', function ($e) use ($controller) {
+            $controller->layout('layout/admin');
+        }, 100);
     }
 
     /**
