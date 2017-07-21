@@ -79,7 +79,7 @@ class HelpdeskController extends AbstractActionController
     {
         $adminNavigation = $this->adminNavigationWidget();
         if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
+            $this->layout()->addChild($adminNavigation, 'adminNavigation');
         }
 
         $adapter = new Paginator\Adapter\Callback(
@@ -106,7 +106,7 @@ class HelpdeskController extends AbstractActionController
     {
         $adminNavigation = $this->adminNavigationWidget();
         if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
+            $this->layout()->addChild($adminNavigation, 'adminNavigation');
         }
 
         $form = new Form\HelpdeskTicketForm(
@@ -158,7 +158,7 @@ class HelpdeskController extends AbstractActionController
 
         $adminNavigation = $this->adminNavigationWidget();
         if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
+            $this->layout()->addChild($adminNavigation, 'adminNavigation');
         }
 
         $form = new Form\HelpdeskCommentForm(

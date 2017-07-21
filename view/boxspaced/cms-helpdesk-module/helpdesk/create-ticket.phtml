@@ -1,58 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title></title>
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <link rel="stylesheet" type="text/css" href="/css/admin.css" />
-        <script type="text/javascript" src="/js/admin.js"></script>
-    </head>
 
-    <body class="yui-skin-sam"><?php echo $this->adminNavigation ?>
+        <div class="row">
+            <div class="col-md-12">
 
-        <div class="title">Create: helpdesk ticket</div>
+                <h1>Create: helpdesk ticket</h1>
 
-        <?php echo $this->messages() ?>
+                <?php
+                $form = $this->form;
+                $form->prepare();
+                ?>
 
-        </div><!-- End top area -->
+                <?php echo $this->form()->openTag($form) ?>
 
-        <?php
-        $form = $this->form;
-        $form->prepare();
-        ?>
+                    <div class="white-box"><!-- Start fieldset -->
+                        <div class="white-box-rounded-corner-top"><div></div></div>
+                        <div class="white-box-content">
+                            <div class="white-box-title">Ticket</div>
 
-        <?php echo $this->form()->openTag($form) ?>
+                            <?php echo $this->adminFormElement($form->get('token')) ?>
+                            <?php echo $this->adminFormElement($form->get('subject')) ?>
+                            <?php echo $this->adminFormElement($form->get('issue')) ?>
+                            <?php echo $this->adminFormElement($form->get('attachment')) ?>
 
-            <div id="stage"><!-- Start stage area -->
+                        </div>
+                    </div><!-- End fieldset -->
 
-                <div class="white-box"><!-- Start fieldset -->
-                    <div class="white-box-rounded-corner-top"><div></div></div>
-                    <div class="white-box-content">
-                        <div class="white-box-title">Ticket</div>
-
-                        <?php echo $this->adminFormElement($form->get('token')) ?>
-                        <?php echo $this->adminFormElement($form->get('subject')) ?>
-                        <?php echo $this->adminFormElement($form->get('issue')) ?>
-                        <?php echo $this->adminFormElement($form->get('attachment')) ?>
-
+                    <div class="submit-area">
+                        <div class="form-element">
+                            <div class="form-inputs line-up">
+                                <?php
+                                $form->get('save')->setAttribute('class', 'button');
+                                echo $this->formElement($form->get('save'));
+                                ?>
+                            </div>
+                        </div>
                     </div>
-                </div><!-- End fieldset -->
 
-            </div><!-- End stage area -->
+                <?php echo $this->form()->closeTag() ?>
 
-            <div class="submit-area">
-                <div class="form-element">
-                    <div class="form-inputs line-up">
-                        <?php
-                        $form->get('save')->setAttribute('class', 'button');
-                        echo $this->formElement($form->get('save'));
-                        ?>
-                    </div>
-                </div>
             </div>
-
-        <?php echo $this->form()->closeTag() ?>
-
-    </body>
-</html>
+        </div>
