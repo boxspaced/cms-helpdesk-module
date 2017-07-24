@@ -2,81 +2,77 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>View: helpdesk ticket</h1>
+                <h1>View ticket</h1>
 
                 <?php
                 $form = $this->form;
+                $form->setAttribute('class', 'form-horizontal');
                 $form->prepare();
                 ?>
 
                 <?php echo $this->form()->openTag($form) ?>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Attachments</div>
-                            <?php foreach ($this->ticket->attachments as $attachment) : ?>
-                            <p><em><?php echo $this->escapeHtml($attachment->username) ?></em> attached: <a href="<?php echo $this->url('helpdesk', ['action' => 'view-attachment'], ['query' => ['fileName' => $attachment->fileName]]); ?>" target="_blank"><?php echo $this->escapeHtml($attachment->fileName) ?></a></p>
-                            <?php endforeach; ?>
-                        </div>
-                    </div><!-- End fieldset -->
+                    <fieldset>
+                        <legend>Attachments</legend>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Ticket</div>
+                        <?php foreach ($this->ticket->attachments as $attachment) : ?>
+                        <p><em><?php echo $this->escapeHtml($attachment->username) ?></em> attached: <a href="<?php echo $this->url('helpdesk', ['action' => 'view-attachment'], ['query' => ['fileName' => $attachment->fileName]]); ?>" target="_blank"><?php echo $this->escapeHtml($attachment->fileName) ?></a></p>
+                        <?php endforeach; ?>
 
-                            <div class="form-element">
-                                <label class="lined-up required">Subject</label>
-                                <div class="form-inputs line-up">
-                                    <?php echo $this->escapeHtml($this->ticket->subject) ?>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
+                    </fieldset>
 
-                            <div class="form-element">
-                                <label class="lined-up required">Issue</label>
-                                <div class="form-inputs line-up">
-                                    <?php echo nl2br($this->escapeHtml($this->ticket->issue)) ?>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
+                    <fieldset>
+                        <legend>Ticket</legend>
 
-                            <div class="form-element">
-                                <label class="lined-up required">&nbsp;</label>
-                                <div class="form-inputs line-up">
-                                    <?php foreach ($this->ticket->comments as $comment) : ?>
-                                    <p class="helpdesk-comment"><em><?php echo $this->escapeHtml($comment->username) ?></em> on <em><?php echo $this->date($comment->createdAt, 'l, F j, Y') ?></em> at <em><?php echo $this->date($comment->createdAt, 'H:i') ?></em> said:<br><br>
-                                    <?php echo nl2br($this->escapeHtml($comment->comment)) ?></p>
-                                    <?php endforeach; ?>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <?php echo $this->adminFormElement($form->get('token')) ?>
-                            <?php echo $this->adminFormElement($form->get('comment')) ?>
-                            <?php echo $this->adminFormElement($form->get('attachment')) ?>
-
-                        </div>
-                    </div>
-
-                    <div class="submit-area">
                         <div class="form-element">
+                            <label class="lined-up required">Subject</label>
                             <div class="form-inputs line-up">
-                                <?php
-                                $form->get('save')->setAttribute('class', 'button');
-                                echo $this->formElement($form->get('save')) ?>
+                                <?php echo $this->escapeHtml($this->ticket->subject) ?>
                             </div>
+                            <div class="clear"></div>
                         </div>
-                        <?php if ($this->canResolve) : ?>
+
                         <div class="form-element">
+                            <label class="lined-up required">Issue</label>
                             <div class="form-inputs line-up">
-                                <?php
-                                $form->get('resolve')->setAttribute('class', 'button');
-                                echo $this->formElement($form->get('resolve')) ?>
+                                <?php echo nl2br($this->escapeHtml($this->ticket->issue)) ?>
                             </div>
+                            <div class="clear"></div>
                         </div>
-                        <?php endif; ?>
+
+                        <div class="form-element">
+                            <label class="lined-up required">&nbsp;</label>
+                            <div class="form-inputs line-up">
+                                <?php foreach ($this->ticket->comments as $comment) : ?>
+                                <p class="helpdesk-comment"><em><?php echo $this->escapeHtml($comment->username) ?></em> on <em><?php echo $this->date($comment->createdAt, 'l, F j, Y') ?></em> at <em><?php echo $this->date($comment->createdAt, 'H:i') ?></em> said:<br><br>
+                                <?php echo nl2br($this->escapeHtml($comment->comment)) ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <?php echo $this->adminFormElement($form->get('token')) ?>
+                        <?php echo $this->adminFormElement($form->get('comment')) ?>
+                        <?php echo $this->adminFormElement($form->get('attachment')) ?>
+
+                    </fieldset>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+
+                            <?php
+                            $form->get('save')->setAttribute('class', 'btn btn-primary');
+                            echo $this->formElement($form->get('save'));
+                            ?>
+
+                            <?php if ($this->canResolve) : ?>
+                            <?php
+                            $form->get('resolve')->setAttribute('class', 'btn btn-success');
+                            echo $this->formElement($form->get('resolve'));
+                            ?>
+                            <?php endif; ?>
+
+                        </div>
                     </div>
 
                 <?php echo $this->form()->closeTag() ?>
