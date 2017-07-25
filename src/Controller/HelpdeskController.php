@@ -77,11 +77,6 @@ class HelpdeskController extends AbstractActionController
      */
     public function indexAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->layout()->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $adapter = new Paginator\Adapter\Callback(
             function ($offset, $itemCountPerPage) {
                 return $this->helpdeskService->getOpenTickets($offset, $itemCountPerPage);
@@ -104,11 +99,6 @@ class HelpdeskController extends AbstractActionController
      */
     public function createTicketAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->layout()->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $form = new Form\HelpdeskTicketForm(
             $this->config['helpdesk']['attachments_directory']
         );
@@ -155,11 +145,6 @@ class HelpdeskController extends AbstractActionController
 
         $canResolve = $this->accountService->isAllowed(get_class(), 'resolve-ticket');
         $this->view->canResolve = $canResolve;
-
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->layout()->addChild($adminNavigation, 'adminNavigation');
-        }
 
         $form = new Form\HelpdeskCommentForm(
             $this->config['helpdesk']['attachments_directory']

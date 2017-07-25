@@ -24,31 +24,32 @@
                     <fieldset>
                         <legend>Ticket</legend>
 
-                        <div class="form-element">
-                            <label class="lined-up required">Subject</label>
-                            <div class="form-inputs line-up">
-                                <?php echo $this->escapeHtml($this->ticket->subject) ?>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Subject</label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">
+                                    <?php echo $this->escapeHtml($this->ticket->subject) ?>
+                                </p>
                             </div>
-                            <div class="clear"></div>
                         </div>
 
-                        <div class="form-element">
-                            <label class="lined-up required">Issue</label>
-                            <div class="form-inputs line-up">
-                                <?php echo nl2br($this->escapeHtml($this->ticket->issue)) ?>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Issue</label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">
+                                    <?php echo nl2br($this->escapeHtml($this->ticket->issue)) ?>
+                                </p>
                             </div>
-                            <div class="clear"></div>
                         </div>
 
-                        <div class="form-element">
-                            <label class="lined-up required">&nbsp;</label>
-                            <div class="form-inputs line-up">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">&nbsp;</label>
+                            <div class="col-md-10">
                                 <?php foreach ($this->ticket->comments as $comment) : ?>
-                                <p class="helpdesk-comment"><em><?php echo $this->escapeHtml($comment->username) ?></em> on <em><?php echo $this->date($comment->createdAt, 'l, F j, Y') ?></em> at <em><?php echo $this->date($comment->createdAt, 'H:i') ?></em> said:<br><br>
+                                <p class="form-control-static helpdesk-comment"><em><?php echo $this->escapeHtml($comment->username) ?></em> on <em><?php echo $this->date($comment->createdAt, 'l, F j, Y') ?></em> at <em><?php echo $this->date($comment->createdAt, 'H:i') ?></em> said:<br><br>
                                 <?php echo nl2br($this->escapeHtml($comment->comment)) ?></p>
                                 <?php endforeach; ?>
                             </div>
-                            <div class="clear"></div>
                         </div>
 
                         <?php echo $this->adminFormElement($form->get('token')) ?>
@@ -57,23 +58,28 @@
 
                     </fieldset>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-2">
+                    <fieldset>
+                        <legend>Submit</legend>
 
-                            <?php
-                            $form->get('save')->setAttribute('class', 'btn btn-primary');
-                            echo $this->formElement($form->get('save'));
-                            ?>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
 
-                            <?php if ($this->canResolve) : ?>
-                            <?php
-                            $form->get('resolve')->setAttribute('class', 'btn btn-success');
-                            echo $this->formElement($form->get('resolve'));
-                            ?>
-                            <?php endif; ?>
+                                <?php
+                                $form->get('save')->setAttribute('class', 'btn btn-primary');
+                                echo $this->formElement($form->get('save'));
+                                ?>
 
+                                <?php if ($this->canResolve) : ?>
+                                <?php
+                                $form->get('resolve')->setAttribute('class', 'btn btn-success');
+                                echo $this->formElement($form->get('resolve'));
+                                ?>
+                                <?php endif; ?>
+
+                            </div>
                         </div>
-                    </div>
+
+                    </fieldset>
 
                 <?php echo $this->form()->closeTag() ?>
 
