@@ -15,9 +15,14 @@
                     <fieldset>
                         <legend>Attachments</legend>
 
-                        <?php foreach ($this->ticket->attachments as $attachment) : ?>
-                        <p><em><?php echo $this->escapeHtml($attachment->username) ?></em> attached: <a href="<?php echo $this->url('helpdesk', ['action' => 'view-attachment'], ['query' => ['fileName' => $attachment->fileName]]); ?>" target="_blank"><?php echo $this->escapeHtml($attachment->fileName) ?></a></p>
-                        <?php endforeach; ?>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">&nbsp;</label>
+                            <div class="col-md-10">
+                                <?php foreach ($this->ticket->attachments as $attachment) : ?>
+                                <p class="form-control-static"><em><?php echo $this->escapeHtml($attachment->username) ?></em> attached: <a href="<?php echo $this->url('helpdesk', ['action' => 'view-attachment'], ['query' => ['fileName' => $attachment->fileName]]); ?>" target="_blank"><?php echo $this->escapeHtml($attachment->fileName) ?></a></p>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
 
                     </fieldset>
 
