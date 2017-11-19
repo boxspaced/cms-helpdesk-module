@@ -1,14 +1,14 @@
-<tr class="<?php echo ($this->partialLoop()->getPartialCounter() % 2) ? 'odd' : 'even' ?>">
+<tr>
 
-<td width="100%">
-<!--<div class="item-icon">
-<img src="<?php echo $this->escapeHtmlAttr($this->typeIcon) ?>" alt="" title="<?php echo $this->escapeHtmlAttr($this->typeName) ?>" />
-</div>-->
+<td>
+<div class="item-icon">
+<img src="/images/icons/pinned.png" alt="Pinned icon" />
+</div>
 <div class="item-title"><em><?php echo $this->escapeHtml($this->subject) ?></em></div>
 <div class="item-detail">
 Status: <em><?php echo $this->escapeHtml($this->status) ?></em><br />
 Created by <em><?php echo $this->escapeHtml($this->username) ?></em> on <em><?php echo $this->date($this->createdAt, 'l, F j, Y') ?></em> at <em><?php echo $this->date($this->createdAt, 'H:i') ?></em></div></td>
 
-<td><a href="<?php echo $this->url('helpdesk', ['action' => 'view-ticket', 'id' => $this->id]); ?>"><img src="/images/icons/view.png" alt="View icon" title="View" /></a></td>
+<td class="col-action"><a href="<?php echo $this->url('helpdesk', ['action' => 'view-ticket', 'id' => $this->id]); ?>"><img src="/images/icons/view.png" alt="View icon" title="View" /></a></td>
 
 </tr>

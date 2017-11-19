@@ -8,6 +8,7 @@ use Boxspaced\CmsHelpdeskModule\Service;
 use Zend\Paginator;
 use Boxspaced\CmsHelpdeskModule\Form;
 use Boxspaced\CmsAccountModule\Service\AccountService;
+use Zend\EventManager\EventManagerInterface;
 
 class HelpdeskController extends AbstractActionController
 {
@@ -56,7 +57,19 @@ class HelpdeskController extends AbstractActionController
         $this->config = $config;
 
         $this->view = new ViewModel();
-        $this->view->setTerminal(true);
+    }
+
+    /**
+     * @param EventManagerInterface $events
+     * @return void
+     */
+    public function setEventManager(EventManagerInterface $events)
+    {
+        parent::setEventManager($events);
+        $controller = $this;
+        $events->attach('dispatch', function ($e) use ($controller) {
+            $controller->layout('layout/admin');
+        }, 100);
     }
 
     /**
@@ -64,11 +77,6 @@ class HelpdeskController extends AbstractActionController
      */
     public function indexAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $adapter = new Paginator\Adapter\Callback(
             function ($offset, $itemCountPerPage) {
                 return $this->helpdeskService->getOpenTickets($offset, $itemCountPerPage);
@@ -91,11 +99,6 @@ class HelpdeskController extends AbstractActionController
      */
     public function createTicketAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $form = new Form\HelpdeskTicketForm(
             $this->config['helpdesk']['attachments_directory']
         );
@@ -142,11 +145,6 @@ class HelpdeskController extends AbstractActionController
 
         $canResolve = $this->accountService->isAllowed(get_class(), 'resolve-ticket');
         $this->view->canResolve = $canResolve;
-
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
-        }
 
         $form = new Form\HelpdeskCommentForm(
             $this->config['helpdesk']['attachments_directory']

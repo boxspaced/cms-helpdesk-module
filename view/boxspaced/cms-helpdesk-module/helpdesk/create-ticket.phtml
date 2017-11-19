@@ -1,72 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title></title>
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
 
-        <link rel="stylesheet" type="text/css" href="/yui/reset/reset-min.css" />
-        <link rel="stylesheet" type="text/css" href="/yui/fonts/fonts-min.css"/>
-        <link rel="stylesheet" type="text/css" href="/yui/button/assets/skins/sam/button.css"/>
-        <link rel="stylesheet" type="text/css" href="/yui/menu/assets/skins/sam/menu.css"/>
+        <div class="row">
+            <div class="col-md-12">
 
-        <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+                <h1>Create ticket</h1>
 
-        <script type="text/javascript" src="/yui/utilities/utilities.js"></script>
-        <script type="text/javascript" src="/yui/container/container-min.js"></script>
-        <script type="text/javascript" src="/yui/menu/menu-min.js"></script>
-        <script type="text/javascript" src="/yui/button/button-min.js"></script>
+                <?php
+                $form = $this->form;
+                $form->setAttribute('class', 'form-horizontal');
+                $form->prepare();
+                ?>
 
-        <script type="text/javascript" src="/js/buttons.js"></script>
-        <script type="text/javascript" src="/js/index_buttons.js"></script>
-        <script type="text/javascript" src="/js/general.js"></script>
-    </head>
+                <?php echo $this->form()->openTag($form) ?>
 
-    <body class="yui-skin-sam"><?php echo $this->adminNavigation ?>
-
-        <div class="title">Create: helpdesk ticket</div>
-
-        <?php echo $this->messages() ?>
-
-        </div><!-- End top area -->
-
-        <?php
-        $form = $this->form;
-        $form->prepare();
-        ?>
-
-        <?php echo $this->form()->openTag($form) ?>
-
-            <div id="stage"><!-- Start stage area -->
-
-                <div class="white-box"><!-- Start fieldset -->
-                    <div class="white-box-rounded-corner-top"><div></div></div>
-                    <div class="white-box-content">
-                        <div class="white-box-title">Ticket</div>
+                    <fieldset>
+                        <legend>Ticket</legend>
 
                         <?php echo $this->adminFormElement($form->get('token')) ?>
                         <?php echo $this->adminFormElement($form->get('subject')) ?>
                         <?php echo $this->adminFormElement($form->get('issue')) ?>
                         <?php echo $this->adminFormElement($form->get('attachment')) ?>
 
-                    </div>
-                </div><!-- End fieldset -->
+                    </fieldset>
 
-            </div><!-- End stage area -->
+                    <fieldset>
+                        <legend>Submit</legend>
 
-            <div class="submit-area">
-                <div class="form-element">
-                    <div class="form-inputs line-up">
-                        <?php
-                        $form->get('save')->setAttribute('class', 'button');
-                        echo $this->formElement($form->get('save'));
-                        ?>
-                    </div>
-                </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+
+                                <?php
+                                $form->get('save')->setAttribute('class', 'btn btn-primary');
+                                echo $this->formElement($form->get('save'));
+                                ?>
+
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                <?php echo $this->form()->closeTag() ?>
+
             </div>
-
-        <?php echo $this->form()->closeTag() ?>
-
-    </body>
-</html>
+        </div>
